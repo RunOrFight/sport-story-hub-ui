@@ -29,7 +29,7 @@ const CreateEventForm = () => {
                    labelPlacement={"outside"}/>
         </div>
 
-        <Button type={"submit"} fullWidth color={"primary"}>{"Create"}</Button>
+        <Button type={"submit"} fullWidth color={"primary"} variant={"bordered"}>{"Create"}</Button>
     </form>
 }
 
