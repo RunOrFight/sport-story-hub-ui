@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {EventsPage} from "./EventPage.tsx";
 import {CreateEventForm} from "./CreateEventForm.tsx";
-import {Modal} from "antd";
+import {IsDev} from "./IsDev.tsx";
 
 
 const router = createBrowserRouter([
@@ -17,5 +17,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <Modal width={'26.25rem'} footer={null} open={true}><RouterProvider router={router}/></Modal>
+    <IsDev><RouterProvider router={router}/></IsDev>
 )
