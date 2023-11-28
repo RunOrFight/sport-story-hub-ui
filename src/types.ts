@@ -1,12 +1,28 @@
+interface IEventLocation {
+    title: string;
+    url: string;
+    address: string;
+    previewId: string
+}
+
+type TEventStatus = "WAITING" | "STARTED" | "ENDED"
+
+interface IEventParticipant {
+    username: string;
+    photoId: string
+}
+
 interface IEventRaw {
-    place: string,
-    date: string,
-    participantsCount: number,
-    price: string
+    location: IEventLocation,
+    status: TEventStatus
+    dateTime: string | Date | number,
+    description: string,
+    price: string,
+    participantsLimit: number
 }
 
 interface IEventFull extends IEventRaw {
-    participants: string[]
+    participants: IEventParticipant[]
     id: string
 }
 

@@ -1,17 +1,28 @@
 import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {EventsPage} from "./EventPage.tsx";
+import {EventsPage} from "./EventsPage.tsx";
 import {CreateEventForm} from "./CreateEventForm.tsx";
 import {IsDev} from "./IsDev.tsx";
+import {routeMap} from "./routeMap.ts";
+import {SingleEventPage} from "./SingleEventPage.tsx";
 
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: routeMap.emptyRoute,
+        element: <EventsPage/>,
+        index: true
+    },
+    {
+        path: routeMap.eventsRoute,
         element: <EventsPage/>,
     },
     {
-        path: "/create_event",
+        path: routeMap.singleEventRoute,
+        element: <SingleEventPage/>
+    },
+    {
+        path: routeMap.createEventRoute,
         element: <CreateEventForm/>
     }
 ]);
