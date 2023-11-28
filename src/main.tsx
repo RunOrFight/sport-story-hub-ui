@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {EventsPage} from "./EventPage.tsx";
 import {CreateEventForm} from "./CreateEventForm.tsx";
+import {Modal} from "antd";
 
 
 const router = createBrowserRouter([
@@ -15,5 +16,6 @@ const router = createBrowserRouter([
     }
 ]);
 
-
-ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router}/>)
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <Modal width={'26.25rem'} footer={null} open={true}><RouterProvider router={router}/></Modal>
+)

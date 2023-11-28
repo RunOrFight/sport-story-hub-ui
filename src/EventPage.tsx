@@ -32,7 +32,8 @@ const EventsPage = () => {
     }, [])
 
     return <Flex vertical gap={"small"}>
-        {Object.values(events).map((event) => <Card key={event.id} hoverable title={event.place} style={{width: 300}}>
+        {Object.values(events).map((event) => <Card key={event.id} hoverable title={event.place}
+                                                    style={{width: "100%"}}>
             <Descriptions layout={"vertical"}>
                 <Descriptions.Item label="Date">{event.date}</Descriptions.Item>
                 <Descriptions.Item label="Price">{event.price}</Descriptions.Item>
