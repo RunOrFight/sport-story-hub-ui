@@ -5,4 +5,9 @@ interface IEventRaw {
     price: string
 }
 
-export type {IEventRaw}
+interface IEventFull extends IEventRaw {
+    participants: string[]
+    id: string
+}
+
+export type {IEventRaw, IEventFull}
