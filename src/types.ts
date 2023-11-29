@@ -5,7 +5,7 @@ interface IEventLocation {
     previewId: string
 }
 
-type TEventStatus = "WAITING" | "STARTED" | "ENDED"
+type TEventStatus = "WAITING" | "STARTED" | "FINISHED"
 
 interface IEventParticipant {
     username: string;
