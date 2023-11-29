@@ -15,7 +15,7 @@ interface IEventParticipant {
 interface IEventRaw {
     location: IEventLocation,
     status: TEventStatus
-    dateTime: string | Date | number,
+    dateTime: Date,
     description: string,
     price: string,
     participantsLimit: number
