@@ -1,20 +1,34 @@
+interface IFile {
+    id: number,
+    url: string
+}
+
 interface IEventLocation {
+    id: number;
     title: string;
     url: string;
     address: string;
-    previewId: string
+    preview: IFile
 }
 
-type TEventStatus = "WAITING" | "STARTED" | "FINISHED"
+enum EEventStatus {
+    WAITING = "waiting",
+    STARTED = "started",
+    FINISHED = "finished"
+}
+
+interface IUser {
+    username: string;
+    photo: IFile
+}
 
 interface IEventParticipant {
-    username: string;
-    photoId: string
+    id: number,
+    user: IUser
 }
 
 interface IEventRaw {
     location: IEventLocation,
-    status: TEventStatus
     dateTime: Date,
     description: string,
     price: string,
@@ -23,7 +37,13 @@ interface IEventRaw {
 
 interface IEventFull extends IEventRaw {
     participants: IEventParticipant[]
-    id: string
+    id: number
+    status: EEventStatus
 }
 
-export type {IEventRaw, IEventFull}
+interface IEventToPost extends Omit<IEventRaw, "location"> {
+    locationId: string
+}
+
+export type {IEventRaw, IEventFull, IEventLocation, IEventToPost}
+export {EEventStatus}

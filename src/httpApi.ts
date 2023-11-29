@@ -1,18 +1,28 @@
-import {IEventFull} from "./types.ts";
+import {EEventStatus, IEventFull, IEventLocation} from "./types.ts";
+
+const eventsLocations: IEventLocation[] = [
+    {
+        id: 234,
+        title: "Box365",
+        url: "https://maps.app.goo.gl/ZeLrHS4BzczpcHAD7",
+        address: "ул. Октябрьская 16/3, Минск",
+        preview: {
+            id: 1,
+            url: "eafaef"
+        }
+    },
+]
 
 const events: IEventFull[] = [
     {
-        id: "123",
-        location: {
-            title: "Box365",
-            url: "https://maps.app.goo.gl/ZeLrHS4BzczpcHAD7",
-            address: "ул. Октябрьская 16/3, Минск",
-            previewId: '1faefaeefae'
-        },
-        status: 'STARTED',
-        dateTime: "20:15, 29 ноября, ср",
+        id: 555,
+        location: eventsLocations[0],
+        status: EEventStatus.STARTED,
+        dateTime: new Date(),
         description: "We hold games in formats from 4x4 to 9x9 with varying durations from 60 to 120 minutes.",
-        participants: [{username: "privetenn", photoId: "gq12gaeg21qe123"}],
+        participants: [{
+            id: 22, user: {username: "privetenn", photo: {url: "ageeag", id: 444}}
+        }],
         participantsLimit: 10,
         price: "5 BYN"
     }
@@ -23,9 +33,13 @@ const httpApi = {
     getEvents: async () => {
         return Promise.resolve(events)
     },
-    getEventById: async (id: string) => {
+    getEventById: async (id: number) => {
         return Promise.resolve(events.find((it) => it.id === id))
-    }
+    },
+    getEventsLocations: async () => {
+        return eventsLocations
+    },
+
 }
 
 export {httpApi}
