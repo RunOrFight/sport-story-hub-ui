@@ -28,22 +28,19 @@ interface IEventParticipant {
 }
 
 interface IEventRaw {
-    location: IEventLocation,
+    locationId: number,
     dateTime: Date,
     description: string,
     price: string,
     participantsLimit: number
 }
 
-interface IEventFull extends IEventRaw {
+interface IEventFull extends Omit<IEventRaw, "locationId"> {
+    location: IEventLocation
     participants: IEventParticipant[]
     id: number
     status: EEventStatus
 }
 
-interface IEventToPost extends Omit<IEventRaw, "location"> {
-    locationId: string
-}
-
-export type {IEventRaw, IEventFull, IEventLocation, IEventToPost}
+export type {IEventRaw, IEventFull, IEventLocation}
 export {EEventStatus}

@@ -28,16 +28,23 @@ const events: IEventFull[] = [
     }
 ]
 
+const DELAY = 1_000
+
+const withDelay = <T>(value: T): Promise<T> => {
+    return new Promise((res) => {
+        setTimeout(() => res(value), DELAY)
+    })
+}
 
 const httpApi = {
     getEvents: async () => {
-        return Promise.resolve(events)
+        return withDelay(events)
     },
     getEventById: async (id: number) => {
-        return Promise.resolve(events.find((it) => it.id === id))
+        return withDelay(events.find((it) => it.id === id))
     },
     getEventsLocations: async () => {
-        return eventsLocations
+        return withDelay(eventsLocations)
     },
 
 }
