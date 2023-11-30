@@ -29,7 +29,7 @@ interface IEventParticipant {
 
 interface IEventRaw {
     locationId: number,
-    dateTime: Date,
+    dateTime: string,
     description: string,
     price: string,
     participantsLimit: number
@@ -42,5 +42,5 @@ interface IEventFull extends Omit<IEventRaw, "locationId"> {
     status: EEventStatus
 }
 
-export type {IEventRaw, IEventFull, IEventLocation}
+export type {IEventRaw, IEventFull, IEventLocation, IUser}
 export {EEventStatus}
