@@ -8,7 +8,7 @@ const SingleEventPage = () => {
     const [event, setEvent] = useState<IEventFull>()
 
     useEffect(() => {
-        httpApi.getEventById(params.id!).then((event) => {
+        httpApi.getEventById(Number(params.id)).then((event) => {
             setEvent(event)
         })
 
