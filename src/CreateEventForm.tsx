@@ -3,6 +3,7 @@ import dayjs from "dayjs"
 import {IEventLocation, IEventRaw} from "./types.ts";
 import {useEffect, useState} from "react";
 import {httpApi} from "./httpApi.ts";
+import "dayjs/locale/ru.js"
 
 interface ICreateEventFormValues extends Omit<IEventRaw, "dateTime"> {
     dateTime: ReturnType<typeof dayjs>
@@ -12,7 +13,7 @@ const initialValues = {
     participantsLimit: 10,
     price: "5 BYN",
     description: "Regular Match",
-    dateTime: dayjs(Date.now())
+    dateTime: dayjs(Date.now()).locale("ru")
 }
 
 const successMessage = {
@@ -31,7 +32,8 @@ const CreateEventForm = () => {
     const [form] = Form.useForm()
 
     const onFinish = async (values: ICreateEventFormValues) => {
-        const dateTime = values.dateTime.toDate()
+
+        const dateTime = values.dateTime.locale("ru").toDate()
 
         Telegram.WebApp.sendData(JSON.stringify({
             ...values,

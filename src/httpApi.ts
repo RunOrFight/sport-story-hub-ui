@@ -36,6 +36,8 @@ const withDelay = <T>(value: T): Promise<T> => {
     })
 }
 
+const BASE_URL = import.meta.env.VITE_EVENT_SERVICE_ENDPOINT
+
 const httpApi = {
     getEvents: async () => {
         return withDelay(events)
@@ -44,7 +46,9 @@ const httpApi = {
         return withDelay(events.find((it) => it.id === id))
     },
     getEventsLocations: async () => {
-        return withDelay(eventsLocations)
+        const response = await fetch(`${BASE_URL}/locations`)
+
+        return await response.json()
     },
 
 }
